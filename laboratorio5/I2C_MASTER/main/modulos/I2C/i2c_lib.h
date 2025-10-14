@@ -34,11 +34,12 @@
  * @param pin_sda -> pin GPIO para los datos 
  * @param pin_scl -> pin GPIO para el reloj 
  * @param slave_addr -> direccion del dispositovo esclavo 
- * 
+ * @param bus_handle -> salida, controlador de bus I2C MASTER
+ * @param dev_handle -> identificador del salve 
  * 
  * 
  */
-void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr, uint32_t speed);
+void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr, uint32_t speed, i2c_master_bus_handle_t *bus_handle, i2c_master_dev_handle_t *dev_handle);
 
 //tareas 
 

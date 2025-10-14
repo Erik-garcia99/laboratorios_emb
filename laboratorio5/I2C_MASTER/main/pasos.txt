@@ -1,0 +1,25 @@
+
+
+-> en este momento tengo 
+
+|   -> iniciado el UART 
+    -> inicado el I2C como maestro 
+
+
+-> pendite de hacer 
+
+    ->I2C
+        ## necesito la funcion que le manda que esclavo quiere leer
+        ## funcion que recibe lo que lee
+        ## funcion que trata lo que recibe 
+
+    -el recibir los datos, el mandar a llamar creo eso lo haremos en el main, por ahora si vemos que se puede hacer genreal lo cambiamos < creo que no es tan facil >
+
+    -> ahora necsitamos la tarea que esta constantemente tratando de leer del dispocitvo esclavo 
+
+############################################################################
+
+    -> UART
+        ##funcion/tarea que lee lo de RX 
+        ##funcion que trata lo que recibe 
+

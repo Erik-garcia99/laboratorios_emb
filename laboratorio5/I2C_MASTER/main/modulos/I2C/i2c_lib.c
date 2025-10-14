@@ -7,8 +7,11 @@
 
 static const char *TAG ="I2C MASTER";
 
+// i2c_master_bus_handle_t bus_handle;
+// i2c_master_dev_handle_t dev_handle; 
 
-void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr, uint32_t speed){
+
+void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr, uint32_t speed, i2c_master_bus_handle_t *bus_handle, i2c_master_dev_handle_t *dev_handle){
 
 
     i2c_master_bus_config_t i2c_mst_config ={
@@ -23,9 +26,9 @@ void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_s
 
     //crear el bus maestro 
 
-    i2c_master_bus_handle_t bus_handle;
+    
 
-    esp_err_t ret = i2c_new_master_bus(&i2c_mst_config, &bus_handle);
+    esp_err_t ret = i2c_new_master_bus(&i2c_mst_config, bus_handle);
 
     if(ret != ESP_OK){
         ESP_LOGE(TAG, "error creando el bus: %s", esp_err_to_name(ret));
@@ -42,9 +45,9 @@ void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_s
         .scl_speed_hz =speed,
     };
 
-    i2c_master_dev_handle_t dev_handle; 
+    
 
-    ret = i2c_master_bus_add_device(bus_handle, &slave_config, &dev_handle);
+    ret = i2c_master_bus_add_device(*bus_handle, &slave_config, dev_handle);
 
     if(ret != ESP_OK){
         ESP_LOGE(TAG,"error al agregar el dispositivo slave %s", esp_err_to_name(ret));
@@ -54,3 +57,4 @@ void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_s
     ESP_LOGI(TAG,"salve agregado correctamente");
 }
 
+//el proceso de lectura solo servira aqui no sera un proceso general 

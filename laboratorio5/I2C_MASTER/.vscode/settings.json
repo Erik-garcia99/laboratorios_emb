@@ -19,6 +19,8 @@
     "uart.h": "c",
     "uart_lib.h": "c",
     "queue.h": "c",
-    "task.h": "c"
+    "task.h": "c",
+    "string.h": "c",
+    "stdlib.h": "c"
   }
 }

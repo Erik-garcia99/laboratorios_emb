@@ -9,6 +9,7 @@
 
 
 
+
 //una macro que detectar si el uart que se envio esta dentro del rengo acordado 
 #define MAX_UART UART_NUM_MAX
 
@@ -59,41 +60,45 @@ esp_err_t init_uart(uart_port_t num_uart,int pin_tx, int pin_rx, uart_word_lengt
 }
 
 
+//creo que esto no es necesario, no va a recibir nada, solo lo mostrara por pantalla 
 
-void uart_task(void *params){
+// void uart_task(void *params){
 
-    uart_event_t event;
-    uint8_t *buffer= malloc(BUFF);
-
-
-    while(1){
+//     uart_event_t event;
+//     uint8_t *buffer= malloc(BUFF);
 
 
-        if(xQueueReceive(event_uart, (void*)&event,portMAX_DELAY)){
+//     while(1){
 
 
-            switch(event.type){
-
-                case UART_DATA :{
-
-                    //esto deberia de mandarlo a una lista que no. porque al final lo que introducmimos queremos tratarlo de alguna manera o lo que nos regresa la funcion mas bien. la funcion que funcionara para tratar loq ue se ingresa por UART. 
+//         if(xQueueReceive(event_uart, (void*)&event,portMAX_DELAY)){
 
 
-                }break;
+//             switch(event.type){
 
-                default:{
-                    const char *mess="otro tipo de error producido";
-                    uart_write_bytes(current_uart, mess, sizeof(mess));
-                }break;
-            }
+//                 case UART_DATA :{
 
-        }
+//                     //esto deberia de mandarlo a una lista que no. porque al final lo que introducmimos queremos tratarlo de alguna manera o lo que nos regresa la funcion mas bien. la funcion que funcionara para tratar loq ue se ingresa por UART. 
+//                     /*
+                    
+//                     en este momento tengo el valor de la temperatura pero para poder imprimrila por UART necesito converila en su formato ascii 
+//                     */
 
-    }
+//                 }break;
+
+//                 default:{
+//                     const char *mess="otro tipo de error producido";
+//                     uart_write_bytes(current_uart, mess, sizeof(mess));
+//                 }break;
+//             }
+
+//         }
+
+//     }
 
 
 
-}
+// }
 
 
 
