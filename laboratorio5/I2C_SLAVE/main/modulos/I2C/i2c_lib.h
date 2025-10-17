@@ -1,16 +1,9 @@
 #ifndef I2C_LIB_H
 #define I2C_LIB_H
-
+// #include<driver/i2c_master.h>
+// #include<driver/i2c_slave.h>
 #include<driver/i2c.h>
-
-/**
- * 
- * @attention -> debemos de cambiar de la api, a la viejita porque la nueva no vale verga 
- * 
- * 
- */
-
-
+#include<driver/i2c_types.h>
 
 /**
  * @author erik garcia chavez 
@@ -51,21 +44,30 @@
  */
 // void i2c_master_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr, uint32_t speed, i2c_master_bus_handle_t *bus_handle, i2c_master_dev_handle_t *dev_handle);
 
+void i2c_master_init(i2c_port_num_t num_i2c, gpio_num_t pin_sda, gpio_num_t pin_scl, uint32_t speed);
+
+
+//ahora aqui la funcion para ser i2c slave 
 
 /**
  * 
- * @brief inicalizacion del I2C
- * 
+ * @brief inicinado I2C slave 
  * @param num_i2c -> numero del I2C a utulizar (I2C_NUM_0 - I2C_NUM_1)
  * @param pin_sda -> pin GPIO para los datos 
  * @param pin_scl -> pin GPIO para el reloj 
- * @param speed -> velocidad de la comunicacion
+ * @param slave_addr -> direccion del dispositovo esclavo 
+ * @param slave_handle  -> bus de identificacion de slave 
+ * @param buff_tx -> tamanio del buffer circular para enviar datos 
+ * @param buff_rx -> tamanio del buffer del software para recepcion 
+ * 
+ * 
+ * 
  * 
  */
 
+// void i2C_slave_init(i2c_port_num_t num_i2c,gpio_num_t pin_sda, gpio_num_t pin_scl,uint8_t slave_addr, i2c_slave_dev_handle_t *slave_handle ,uint32_t buff_tx, uint32_t buff_rx);
 
-void i2c_master_init(i2c_port_t num_i2c, gpio_num_t pin_sda, gpio_num_t pin_scl, uint32_t speed);
-
+void i2C_slave_init(i2c_port_num_t num_i2c, gpio_num_t pin_sda, gpio_num_t pin_scl, uint8_t slave_addr);
 
 //tareas 
 

@@ -15,14 +15,6 @@
     "--query-driver=C:\\Users\\erikG\\.espressif\\tools\\xtensa-esp-elf\\esp-14.2.0_20241119\\xtensa-esp-elf\\bin\\xtensa-esp32-elf-gcc.exe",
     "--compile-commands-dir=${workspaceFolder}\\build"
   ],
-  "files.associations": {
-    "uart.h": "c",
-    "uart_lib.h": "c",
-    "queue.h": "c",
-    "task.h": "c",
-    "string.h": "c",
-    "stdlib.h": "c"
-  },
-  "idf.portWin": "COM6",
-  "idf.flashType": "UART"
+  "idf.flashType": "UART",
+  "idf.portWin": "COM3"
 }
