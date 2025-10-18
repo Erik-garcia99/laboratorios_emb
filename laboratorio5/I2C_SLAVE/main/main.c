@@ -69,37 +69,10 @@ void app_main(void)
 
 }
 
-/*
-bool read_sens_tmp(int16_t *tmp){
-    
-    uint8_t reg_addr = 0x00;
-    uint8_t data[2]= {0};
-
-    esp_err_t ret = i2c_master_transmit(sensor_handle, &reg_addr, 1, 1000/portMAX_DELAY);
-
-    if(ret != ESP_OK){
-         ESP_LOGE(TAG, "error al seleccionar registro: %s", esp_err_to_name(ret));
-        return false;
-    }
-
-    ret = i2c_master_receive(sensor_handle, data, 2, 1000/portTICK_PERIOD_MS);
-    
-    if(ret != ESP_OK){
-        ESP_LOGE(TAG, "error en la lectura al sensor: %s", esp_err_to_name(ret));
-        return false;
-    }
-
-    *tmp = (data[0] << 8) | data[1];
-
-    return true;
-}*/
-
-// REEMPLAZA tu función read_sens_tmp completa con esta:
 bool read_sens_tmp(int16_t *tmp) {
     uint8_t reg_addr = 0x00;
     uint8_t data[2] = {0};
 
-    // El driver antiguo usa "command links"
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     // Escribir la dirección del sensor y el registro que queremos leer
